@@ -345,7 +345,7 @@ export default function WeddingWebsite() {
       {/* The Day Before Section - Friday */}
       <section id="day-before" style={{
         padding: '6rem 2rem',
-        background: '#fafafa'
+        background: '#ffffff'
       }}>
         <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
           <h2 className="section-title">the day before</h2>
@@ -365,7 +365,7 @@ export default function WeddingWebsite() {
             friday, may 29th
           </p>
           
-          <div className="card">
+          <div>
             <div style={{ marginBottom: '1rem' }}>
               <DrinksIcon />
             </div>
@@ -424,7 +424,7 @@ export default function WeddingWebsite() {
             saturday, may 30th
           </p>
           
-          <div className="card" style={{ background: '#fafafa' }}>
+          <div>
             <div style={{ marginBottom: '1rem' }}>
               <CeremonyIcon />
             </div>
