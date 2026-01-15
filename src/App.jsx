@@ -22,40 +22,13 @@ export default function WeddingWebsite() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Stick figure couple SVG matching the save-the-date
-  const StickCouple = ({ size = 200 }) => (
-    <svg width={size} height={size * 0.75} viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Jordan - left figure (no hair) */}
-      <circle cx="60" cy="28" r="16" stroke="#1a1a1a" strokeWidth="2.5" fill="none"/>
-      <circle cx="54" cy="25" r="2" fill="#1a1a1a"/>
-      <circle cx="66" cy="25" r="2" fill="#1a1a1a"/>
-      <path d="M54 33 Q60 38 66 33" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      <line x1="60" y1="44" x2="60" y2="85" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="55" x2="38" y2="75" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="55" x2="82" y2="70" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="85" x2="42" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="85" x2="78" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      
-      {/* Heart in the middle */}
-      <path d="M100 58 C100 50 92 46 92 54 C92 62 100 70 100 70 C100 70 108 62 108 54 C108 46 100 50 100 58Z" fill="#e63946"/>
-      
-      {/* Maggie - right figure (with hair) */}
-      <circle cx="140" cy="28" r="16" stroke="#1a1a1a" strokeWidth="2.5" fill="none"/>
-      <circle cx="134" cy="25" r="2" fill="#1a1a1a"/>
-      <circle cx="146" cy="25" r="2" fill="#1a1a1a"/>
-      <path d="M134 33 Q140 38 146 33" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      {/* Hair - wavy lines on each side like the original */}
-      <path d="M124 22 Q121 32 124 45" stroke="#1a1a1a" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-      <path d="M156 22 Q159 32 156 45" stroke="#1a1a1a" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-      <line x1="140" y1="44" x2="140" y2="85" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="55" x2="118" y2="70" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="55" x2="162" y2="75" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="85" x2="122" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="85" x2="158" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      
-      {/* Holding hands */}
-      <line x1="82" y1="70" x2="118" y2="70" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-    </svg>
+  // Using the original stick figure graphic
+  const StickCouple = ({ width = 220 }) => (
+    <img 
+      src="/couple.png" 
+      alt="Jordan and Maggie stick figures holding hands with a heart"
+      style={{ width, height: 'auto' }}
+    />
   );
 
   const SmallHeart = () => (
@@ -329,7 +302,7 @@ export default function WeddingWebsite() {
         </h1>
         
         <div style={{ margin: '3rem 0', animation: 'fadeUp 1s ease-out 0.3s both' }}>
-          <StickCouple size={220} />
+          <StickCouple width={280} />
         </div>
         
         <p style={{
@@ -485,28 +458,8 @@ export default function WeddingWebsite() {
               >
                 view on google maps →
               </a>
-            </div>
-          </div>
-          
-          {/* Dress Code */}
-          <div style={{ marginTop: '2rem' }}>
-            <div className="card" style={{ maxWidth: '300px', margin: '0 auto' }}>
-              <p style={{
-                fontFamily: "'Karla', sans-serif",
-                fontSize: '11px',
-                letterSpacing: '1px',
-                textTransform: 'lowercase',
-                color: '#e63946',
-                marginBottom: '1rem'
-              }}>
-                dress code
-              </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>garden formal</p>
-              <p style={{ fontSize: '1rem', color: '#666' }}>cocktail attire welcome</p>
-              <div className="divider" />
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
-                comfortable shoes<br />
-                recommended for grass
+              <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
+                dress code: garden formal
               </p>
             </div>
           </div>
@@ -845,7 +798,7 @@ export default function WeddingWebsite() {
         background: '#ffffff'
       }}>
         <div style={{ marginBottom: '1.5rem' }}>
-          <StickCouple size={100} />
+          <StickCouple width={120} />
         </div>
         <p style={{
           fontFamily: "'Libre Baskerville', serif",
