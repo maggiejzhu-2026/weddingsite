@@ -345,7 +345,7 @@ export default function WeddingWebsite() {
       {/* The Day Before Section - Friday */}
       <section id="day-before" style={{
         padding: '6rem 2rem',
-        background: '#ffffff'
+        background: '#fafafa'
       }}>
         <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
           <h2 className="section-title">the day before</h2>
