@@ -27,6 +27,7 @@ export default function WeddingWebsite() {
     <img 
       src="/couple.png" 
       alt="Jordan and Maggie stick figures holding hands with a heart"
+      className="couple-image"
       style={{ width, height: 'auto' }}
     />
   );
@@ -121,6 +122,19 @@ export default function WeddingWebsite() {
           }
         }
         
+        @keyframes gentleSway {
+          0%, 100% { transform: rotate(-2deg); }
+          50% { transform: rotate(2deg); }
+        }
+        
+        .couple-image {
+          transition: transform 0.3s ease;
+        }
+        
+        .couple-image:hover {
+          animation: gentleSway 1s ease-in-out infinite;
+        }
+        
         .nav-link {
           color: #1a1a1a;
           text-decoration: none;
@@ -131,6 +145,13 @@ export default function WeddingWebsite() {
           transition: color 0.3s ease;
           cursor: pointer;
           text-transform: lowercase;
+        }
+        
+        @media (max-width: 600px) {
+          .nav-link {
+            font-size: 11px;
+            letter-spacing: 0.5px;
+          }
         }
         
         .nav-link:hover {
@@ -260,6 +281,18 @@ export default function WeddingWebsite() {
           line-height: 1.6;
           color: '#666';
         }
+        
+        /* Mobile styles */
+        @media (max-width: 600px) {
+          section {
+            padding: 4rem 1.5rem !important;
+          }
+          
+          nav {
+            gap: 1rem !important;
+            padding: 1rem !important;
+          }
+        }
       `}</style>
 
       {/* Navigation */}
@@ -268,10 +301,10 @@ export default function WeddingWebsite() {
         top: 0,
         left: 0,
         right: 0,
-        padding: '1.5rem 2rem',
+        padding: '1.25rem 1.5rem',
         display: 'flex',
         justifyContent: 'center',
-        gap: '2.5rem',
+        gap: '1.5rem',
         background: 'rgba(255,255,255,0.98)',
         zIndex: 1000,
         borderBottom: '1px solid #f0f0f0',
