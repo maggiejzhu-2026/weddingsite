@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function WeddingWebsite() {
   const [rsvpData, setRsvpData] = useState({
@@ -11,26 +11,6 @@ export default function WeddingWebsite() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  const weddingDate = new Date('2026-05-30T15:00:00');
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const diff = weddingDate - now;
-      
-      if (diff > 0) {
-        setCountdown({
-          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((diff / 1000 / 60) % 60),
-          seconds: Math.floor((diff / 1000) % 60)
-        });
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handleRsvp = (e) => {
     e.preventDefault();
@@ -44,37 +24,37 @@ export default function WeddingWebsite() {
 
   // Stick figure couple SVG matching the save-the-date
   const StickCouple = ({ size = 200 }) => (
-    <svg width={size} height={size * 0.8} viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Jordan - left figure */}
-      <circle cx="60" cy="30" r="18" stroke="#1a1a1a" strokeWidth="2.5" fill="none"/>
-      <circle cx="54" cy="26" r="2" fill="#1a1a1a"/>
-      <circle cx="66" cy="26" r="2" fill="#1a1a1a"/>
-      <path d="M54 36 Q60 42 66 36" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      <line x1="60" y1="48" x2="60" y2="95" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="60" x2="35" y2="80" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="60" x2="85" y2="75" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="95" x2="40" y2="140" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="60" y1="95" x2="80" y2="140" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+    <svg width={size} height={size * 0.75} viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Jordan - left figure (no hair) */}
+      <circle cx="60" cy="28" r="16" stroke="#1a1a1a" strokeWidth="2.5" fill="none"/>
+      <circle cx="54" cy="25" r="2" fill="#1a1a1a"/>
+      <circle cx="66" cy="25" r="2" fill="#1a1a1a"/>
+      <path d="M54 33 Q60 38 66 33" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
+      <line x1="60" y1="44" x2="60" y2="85" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="60" y1="55" x2="38" y2="75" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="60" y1="55" x2="82" y2="70" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="60" y1="85" x2="42" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="60" y1="85" x2="78" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
       
       {/* Heart in the middle */}
-      <path d="M100 65 C100 55 90 50 90 60 C90 70 100 80 100 80 C100 80 110 70 110 60 C110 50 100 55 100 65Z" fill="#e63946"/>
+      <path d="M100 58 C100 50 92 46 92 54 C92 62 100 70 100 70 C100 70 108 62 108 54 C108 46 100 50 100 58Z" fill="#e63946"/>
       
-      {/* Maggie - right figure */}
-      <circle cx="140" cy="30" r="18" stroke="#1a1a1a" strokeWidth="2.5" fill="none"/>
-      <circle cx="134" cy="26" r="2" fill="#1a1a1a"/>
-      <circle cx="146" cy="26" r="2" fill="#1a1a1a"/>
-      <path d="M134 36 Q140 42 146 36" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      {/* Hair lines */}
-      <path d="M125 20 Q122 30 125 40" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      <path d="M155 20 Q158 30 155 40" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      <line x1="140" y1="48" x2="140" y2="95" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="60" x2="115" y2="75" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="60" x2="165" y2="80" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="95" x2="120" y2="140" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      <line x1="140" y1="95" x2="160" y2="140" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      {/* Maggie - right figure (with hair) */}
+      <circle cx="140" cy="28" r="16" stroke="#1a1a1a" strokeWidth="2.5" fill="none"/>
+      <circle cx="134" cy="25" r="2" fill="#1a1a1a"/>
+      <circle cx="146" cy="25" r="2" fill="#1a1a1a"/>
+      <path d="M134 33 Q140 38 146 33" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
+      {/* Hair - wavy lines on each side like the original */}
+      <path d="M124 22 Q121 32 124 45" stroke="#1a1a1a" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+      <path d="M156 22 Q159 32 156 45" stroke="#1a1a1a" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+      <line x1="140" y1="44" x2="140" y2="85" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="140" y1="55" x2="118" y2="70" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="140" y1="55" x2="162" y2="75" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="140" y1="85" x2="122" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="140" y1="85" x2="158" y2="125" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
       
       {/* Holding hands */}
-      <line x1="85" y1="75" x2="115" y2="75" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      <line x1="82" y1="70" x2="118" y2="70" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
     </svg>
   );
 
@@ -198,27 +178,6 @@ export default function WeddingWebsite() {
           color: #999;
         }
         
-        .countdown-item {
-          text-align: center;
-          padding: 0 1.5rem;
-        }
-        
-        .countdown-number {
-          font-family: 'Libre Baskerville', serif;
-          font-size: clamp(1.5rem, 5vw, 2.5rem);
-          font-weight: 400;
-          color: #1a1a1a;
-        }
-        
-        .countdown-label {
-          font-family: 'Karla', sans-serif;
-          font-size: 11px;
-          letter-spacing: 1px;
-          text-transform: lowercase;
-          color: #666;
-          margin-top: 0.25rem;
-        }
-        
         .card {
           background: #fafafa;
           padding: 2.5rem;
@@ -330,28 +289,6 @@ export default function WeddingWebsite() {
         }}>
           ottawa, canada
         </p>
-
-        {/* Countdown */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginTop: '4rem',
-          animation: 'fadeUp 1s ease-out 0.8s both'
-        }}>
-          {[
-            { value: countdown.days, label: 'days' },
-            { value: countdown.hours, label: 'hours' },
-            { value: countdown.minutes, label: 'min' },
-            { value: countdown.seconds, label: 'sec' }
-          ].map((item, i) => (
-            <div key={i} className="countdown-item" style={{
-              borderRight: i < 3 ? '1px solid #e0e0e0' : 'none'
-            }}>
-              <div className="countdown-number">{item.value}</div>
-              <div className="countdown-label">{item.label}</div>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* Our Story Section */}
@@ -430,11 +367,55 @@ export default function WeddingWebsite() {
             <SmallHeart />
           </div>
           
+          {/* Welcome Event - May 29th */}
+          <div style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+            <p style={{
+              fontFamily: "'Karla', sans-serif",
+              fontSize: '12px',
+              letterSpacing: '2px',
+              textTransform: 'lowercase',
+              color: '#e63946',
+              marginBottom: '1rem'
+            }}>
+              friday, may 29th
+            </p>
+            <div className="card" style={{ maxWidth: '400px', margin: '0 auto' }}>
+              <p style={{
+                fontFamily: "'Karla', sans-serif",
+                fontSize: '11px',
+                letterSpacing: '1px',
+                textTransform: 'lowercase',
+                color: '#e63946',
+                marginBottom: '1rem'
+              }}>
+                welcome drinks
+              </p>
+              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Tavern on the Hill</p>
+              <p style={{ fontSize: '1rem', color: '#666' }}>7:00 in the evening</p>
+              <div className="divider" />
+              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
+                Join us for casual drinks<br />
+                the night before the wedding
+              </p>
+            </div>
+          </div>
+
+          {/* Wedding Day - May 30th */}
+          <p style={{
+            fontFamily: "'Karla', sans-serif",
+            fontSize: '12px',
+            letterSpacing: '2px',
+            textTransform: 'lowercase',
+            color: '#e63946',
+            marginBottom: '1rem'
+          }}>
+            saturday, may 30th
+          </p>
+          
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.5rem',
-            marginTop: '3rem'
+            gap: '1.5rem'
           }}>
             <div className="card">
               <p style={{
@@ -447,12 +428,30 @@ export default function WeddingWebsite() {
               }}>
                 ceremony
               </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>saturday, may 30th</p>
-              <p style={{ fontSize: '1rem', color: '#666' }}>3:00 in the afternoon</p>
+              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>3:00 in the afternoon</p>
               <div className="divider" />
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
                 Vignoble de Chelsea<br />
                 Gatineau Hills, Quebec
+              </p>
+            </div>
+            
+            <div className="card">
+              <p style={{
+                fontFamily: "'Karla', sans-serif",
+                fontSize: '11px',
+                letterSpacing: '1px',
+                textTransform: 'lowercase',
+                color: '#e63946',
+                marginBottom: '1rem'
+              }}>
+                shuttle service
+              </p>
+              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>details coming soon</p>
+              <div className="divider" />
+              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#666', fontStyle: 'italic' }}>
+                Shuttle times and pickup<br />
+                locations to be announced
               </p>
             </div>
             
@@ -475,8 +474,11 @@ export default function WeddingWebsite() {
                 Vignoble de Chelsea
               </p>
             </div>
-            
-            <div className="card">
+          </div>
+          
+          {/* Dress Code */}
+          <div style={{ marginTop: '2rem' }}>
+            <div className="card" style={{ maxWidth: '300px', margin: '0 auto' }}>
               <p style={{
                 fontFamily: "'Karla', sans-serif",
                 fontSize: '11px',
