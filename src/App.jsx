@@ -277,13 +277,13 @@ export default function WeddingWebsite() {
         borderBottom: '1px solid #f0f0f0',
         flexWrap: 'wrap'
       }}>
-        {['home', 'details', 'travel', 'faq', 'rsvp'].map((section) => (
+        {['home', 'day-before', 'details', 'travel', 'faq', 'rsvp'].map((section) => (
           <span
             key={section}
             className={`nav-link ${activeSection === section ? 'active' : ''}`}
             onClick={() => scrollToSection(section)}
           >
-            {section === 'details' ? 'the day' : section}
+            {section === 'day-before' ? 'the day before' : section === 'details' ? 'the day' : section}
           </span>
         ))}
       </nav>
@@ -342,76 +342,77 @@ export default function WeddingWebsite() {
         </p>
       </section>
 
-      {/* Event Details Section */}
-      <section id="details" style={{
+      {/* The Day Before Section - Friday */}
+      <section id="day-before" style={{
         padding: '6rem 2rem',
         background: '#fafafa'
       }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 className="section-title">the celebration</h2>
+        <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 className="section-title">the day before</h2>
           
           <div className="heart-divider">
             <SmallHeart />
           </div>
           
-          {/* Welcome Event - May 29th */}
-          <div style={{ marginTop: '3rem', marginBottom: '4rem' }}>
+          <p style={{
+            fontFamily: "'Karla', sans-serif",
+            fontSize: '13px',
+            letterSpacing: '1px',
+            textTransform: 'lowercase',
+            color: '#999',
+            marginBottom: '1.5rem'
+          }}>
+            friday, may 29th
+          </p>
+          
+          <div className="card">
+            <div style={{ marginBottom: '1rem' }}>
+              <DrinksIcon />
+            </div>
             <p style={{
               fontFamily: "'Karla', sans-serif",
               fontSize: '13px',
               letterSpacing: '1px',
               textTransform: 'lowercase',
-              color: '#999',
-              marginBottom: '1.5rem'
+              color: '#666',
+              marginBottom: '1rem'
             }}>
-              friday, may 29th
+              welcome drinks
             </p>
-            <div className="card" style={{ maxWidth: '400px', margin: '0 auto' }}>
-              <div style={{ marginBottom: '1rem' }}>
-                <DrinksIcon />
-              </div>
-              <p style={{
-                fontFamily: "'Karla', sans-serif",
-                fontSize: '13px',
-                letterSpacing: '1px',
-                textTransform: 'lowercase',
-                color: '#666',
-                marginBottom: '1rem'
-              }}>
-                welcome drinks
-              </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>
-                <a 
-                  href="https://maps.app.goo.gl/tavern-on-the-hill" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="venue-link"
-                  style={{ color: '#1a1a1a', textDecoration: 'none' }}
-                >
-                  Tavern on the Hill
-                </a>
-              </p>
-              <p style={{ fontSize: '1rem', color: '#666' }}>6:00pm – 9:00pm</p>
-              <div className="divider" />
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
-                Join us for casual drinks the night before the wedding
-              </p>
-              <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
-                dress code: casual
-              </p>
-              <a 
-                href="https://www.google.com/maps/search/?api=1&query=Tavern+on+the+Hill+Major%27s+Hill+Park+Ottawa" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="venue-link"
-                style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '1rem' }}
-              >
-                view on google maps →
-              </a>
-            </div>
+            <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Tavern on the Hill</p>
+            <p style={{ fontSize: '1rem', color: '#666' }}>6:00pm – 9:00pm</p>
+            <div className="divider" />
+            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
+              Join us for casual drinks the night before the wedding
+            </p>
+            <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
+              dress code: casual
+            </p>
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Tavern+on+the+Hill+Major%27s+Hill+Park+Ottawa" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="venue-link"
+              style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '0.75rem' }}
+            >
+              view on google maps →
+            </a>
           </div>
+        </div>
+      </section>
 
-          {/* Wedding Day - May 30th */}
+      {/* The Day Section - Saturday */}
+      <section id="details" style={{
+        padding: '6rem 2rem',
+        background: '#ffffff'
+      }}>
+        <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 className="section-title">the day</h2>
+          
+          <div className="heart-divider">
+            <SmallHeart />
+          </div>
+          
           <p style={{
             fontFamily: "'Karla', sans-serif",
             fontSize: '13px',
@@ -423,75 +424,60 @@ export default function WeddingWebsite() {
             saturday, may 30th
           </p>
           
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem',
-            maxWidth: '600px',
-            margin: '0 auto'
-          }}>
-            <div className="card">
-              <div style={{ marginBottom: '1rem' }}>
-                <CeremonyIcon />
-              </div>
-              <p style={{
-                fontFamily: "'Karla', sans-serif",
-                fontSize: '13px',
-                letterSpacing: '1px',
-                textTransform: 'lowercase',
-                color: '#666',
-                marginBottom: '1rem'
-              }}>
-                ceremony & reception
-              </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>4:00pm – 11:00pm</p>
-              <div className="divider" />
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
-                Vignoble de Chelsea<br />
-                <span style={{ color: '#666', fontSize: '0.9rem' }}>30 min from downtown Ottawa</span>
-              </p>
-              <a 
-                href="https://www.google.com/maps/search/?api=1&query=Vignoble+de+Chelsea+1582+Route+105+Chelsea+Quebec" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="venue-link"
-                style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '1rem' }}
-              >
-                view on google maps →
-              </a>
-              <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
-                dress code: garden formal
-              </p>
+          <div className="card" style={{ background: '#fafafa' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <CeremonyIcon />
             </div>
+            <p style={{
+              fontFamily: "'Karla', sans-serif",
+              fontSize: '13px',
+              letterSpacing: '1px',
+              textTransform: 'lowercase',
+              color: '#666',
+              marginBottom: '1rem'
+            }}>
+              ceremony & reception
+            </p>
+            <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Vignoble de Chelsea</p>
+            <p style={{ fontSize: '1rem', color: '#666' }}>4:00pm – 11:00pm</p>
+            <p style={{ fontSize: '0.9rem', color: '#999', marginTop: '0.25rem' }}>30 min from downtown Ottawa</p>
+            <div className="divider" />
+            <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
+              dress code: garden formal
+            </p>
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Vignoble+de+Chelsea+1582+Route+105+Chelsea+Quebec" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="venue-link"
+              style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '0.75rem' }}
+            >
+              view on google maps →
+            </a>
           </div>
-        </div>
-      </section>
-
-      {/* Shuttle Section */}
-      <section style={{
-        padding: '4rem 2rem',
-        background: '#ffffff'
-      }}>
-        <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
-          <div style={{ marginBottom: '1.5rem' }}>
-            <ShuttleIcon />
+          
+          {/* Shuttle info */}
+          <div style={{ marginTop: '2rem' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <ShuttleIcon />
+            </div>
+            <p style={{
+              fontFamily: "'Karla', sans-serif",
+              fontSize: '13px',
+              letterSpacing: '1px',
+              textTransform: 'lowercase',
+              color: '#666',
+              marginBottom: '1rem'
+            }}>
+              getting there & back
+            </p>
+            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginBottom: '0.5rem' }}>
+              <strong style={{ color: '#1a1a1a' }}>there:</strong> grab an Uber to the venue
+            </p>
+            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333' }}>
+              <strong style={{ color: '#1a1a1a' }}>back:</strong> shuttle to downtown Ottawa at the end of the night
+            </p>
           </div>
-          <p style={{
-            fontFamily: "'Karla', sans-serif",
-            fontSize: '13px',
-            letterSpacing: '1px',
-            textTransform: 'lowercase',
-            color: '#666',
-            marginBottom: '1rem'
-          }}>
-            getting there & back
-          </p>
-          <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
-            <strong style={{ color: '#1a1a1a' }}>getting there:</strong> please grab an Uber to the venue
-          </p>
-          <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333' }}>
-            <strong style={{ color: '#1a1a1a' }}>getting home:</strong> we'll have a shuttle back to downtown Ottawa at the end of the night
-          </p>
         </div>
       </section>
 
@@ -515,14 +501,6 @@ export default function WeddingWebsite() {
             <strong style={{ color: '#1a1a1a' }}>Flying in?</strong><br />
             Ottawa Airport (YOW) is about 20 minutes from downtown.
           </p>
-          
-          <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#fff' }}>
-            <p style={{ fontSize: '0.95rem', color: '#666' }}>
-              We've reserved a room block at:<br />
-              <strong style={{ color: '#1a1a1a' }}>[Hotel Name]</strong><br />
-              <span style={{ color: '#e63946' }}>code: JORDANMAGGIE</span>
-            </p>
-          </div>
         </div>
       </section>
 
@@ -761,26 +739,7 @@ export default function WeddingWebsite() {
         textAlign: 'center',
         background: '#ffffff'
       }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <StickCouple width={120} />
-        </div>
-        <p style={{
-          fontFamily: "'Libre Baskerville', serif",
-          fontSize: '1.5rem',
-          color: '#1a1a1a',
-          textTransform: 'lowercase'
-        }}>
-          jordan <span style={{ color: '#e63946' }}>&</span> maggie
-        </p>
-        <p style={{
-          fontFamily: "'Karla', sans-serif",
-          fontSize: '13px',
-          color: '#666',
-          marginTop: '0.5rem',
-          textTransform: 'lowercase'
-        }}>
-          may 30, 2026 · ottawa, canada
-        </p>
+        <StickCouple width={120} />
       </footer>
     </div>
   );
