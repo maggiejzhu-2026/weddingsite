@@ -59,14 +59,14 @@ export default function WeddingWebsite() {
   );
 
   const SmallHeart = () => (
-    <svg width="16" height="16" viewBox="0 0 20 20" fill="#e63946">
+    <svg width="12" height="12" viewBox="0 0 20 20" fill="#e63946">
       <path d="M10 18 C10 18 2 12 2 7 C2 3 5 1 10 5 C15 1 18 3 18 7 C18 12 10 18 10 18Z"/>
     </svg>
   );
 
   // Simple stick figure icons for events
   const DrinksIcon = () => (
-    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       {/* Wine glass */}
       <path d="M15 8 L15 8 L11 20 Q11 24 15 24 Q19 24 19 20 L15 8" />
       <line x1="15" y1="24" x2="15" y2="38" />
@@ -74,50 +74,43 @@ export default function WeddingWebsite() {
       {/* Beer mug */}
       <rect x="28" y="12" width="12" height="22" rx="2" />
       <path d="M40 16 Q46 16 46 22 Q46 28 40 28" />
-      <line x1="31" y1="18" x2="31" y2="28" />
-      <line x1="34" y1="17" x2="34" y2="29" />
-      <line x1="37" y1="18" x2="37" y2="28" />
     </svg>
   );
 
   const CeremonyIcon = () => (
-    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round">
+    <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round">
       {/* Simple arch/arbor */}
       <path d="M10 42 L10 18 Q10 8 25 8 Q40 8 40 18 L40 42" fill="none" />
       {/* Heart at top */}
-      <path d="M25 16 C25 13 22 12 22 14.5 C22 17 25 20 25 20 C25 20 28 17 28 14.5 C28 12 25 13 25 16Z" fill="#e63946" stroke="none"/>
-      {/* Ground line */}
-      <line x1="6" y1="42" x2="44" y2="42" />
+      <path d="M25 18 C25 15 22 14 22 16.5 C22 19 25 22 25 22 C25 22 28 19 28 16.5 C28 14 25 15 25 18Z" fill="#e63946" stroke="none"/>
     </svg>
   );
 
   const DinnerIcon = () => (
-    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round">
+    <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round">
       {/* Plate */}
-      <ellipse cx="25" cy="30" rx="16" ry="8" />
+      <ellipse cx="25" cy="30" rx="14" ry="6" />
       {/* Fork */}
-      <line x1="12" y1="10" x2="12" y2="22" />
-      <line x1="10" y1="10" x2="10" y2="16" />
-      <line x1="14" y1="10" x2="14" y2="16" />
+      <line x1="12" y1="12" x2="12" y2="22" />
+      <line x1="10" y1="12" x2="10" y2="17" />
+      <line x1="14" y1="12" x2="14" y2="17" />
       {/* Knife */}
-      <line x1="38" y1="10" x2="38" y2="22" />
-      <path d="M38 10 Q41 12 38 16" />
+      <line x1="38" y1="12" x2="38" y2="22" />
+      <path d="M38 12 Q41 14 38 17" />
     </svg>
   );
 
   const ShuttleIcon = () => (
-    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       {/* Bus body */}
-      <rect x="6" y="16" width="38" height="20" rx="3" />
+      <rect x="6" y="16" width="38" height="18" rx="3" />
       {/* Windows */}
-      <rect x="10" y="20" width="6" height="6" rx="1" />
-      <rect x="19" y="20" width="6" height="6" rx="1" />
-      <rect x="28" y="20" width="6" height="6" rx="1" />
+      <rect x="11" y="20" width="7" height="6" rx="1" />
+      <rect x="21" y="20" width="7" height="6" rx="1" />
+      <rect x="31" y="20" width="7" height="6" rx="1" />
       {/* Wheels */}
-      <circle cx="14" cy="36" r="4" />
-      <circle cx="36" cy="36" r="4" />
-      {/* Front */}
-      <line x1="38" y1="20" x2="42" y2="20" />
+      <circle cx="14" cy="34" r="3" />
+      <circle cx="36" cy="34" r="3" />
     </svg>
   );
 
@@ -183,10 +176,11 @@ export default function WeddingWebsite() {
         }
         
         .section-title {
-          font-size: clamp(1.5rem, 4vw, 2rem);
+          font-size: clamp(1.25rem, 3vw, 1.5rem);
           font-weight: 400;
           text-transform: lowercase;
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
+          color: #1a1a1a;
         }
         
         .btn-primary {
@@ -228,8 +222,8 @@ export default function WeddingWebsite() {
         
         .card {
           background: #fafafa;
-          padding: 2.5rem;
-          transition: all 0.3s ease;
+          padding: 2rem;
+          transition: background 0.3s ease;
         }
         
         .card:hover {
@@ -237,24 +231,24 @@ export default function WeddingWebsite() {
         }
         
         .divider {
-          width: 40px;
+          width: 30px;
           height: 1px;
-          background: #1a1a1a;
-          margin: 1.5rem auto;
+          background: #e0e0e0;
+          margin: 1.25rem auto;
         }
         
         .heart-divider {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 1rem;
-          margin: 2rem 0;
+          gap: 0.75rem;
+          margin: 1.5rem 0;
         }
         
         .heart-divider::before,
         .heart-divider::after {
           content: '';
-          width: 40px;
+          width: 30px;
           height: 1px;
           background: #e0e0e0;
         }
@@ -271,8 +265,8 @@ export default function WeddingWebsite() {
         
         .faq-item {
           text-align: left;
-          padding: 1.5rem 0;
-          border-bottom: 1px solid #e0e0e0;
+          padding: 1.25rem 0;
+          border-bottom: 1px solid #f0f0f0;
         }
         
         .faq-item:last-child {
@@ -281,16 +275,16 @@ export default function WeddingWebsite() {
         
         .faq-question {
           font-family: 'Karla', sans-serif;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 500;
           color: #1a1a1a;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.4rem;
         }
         
         .faq-answer {
-          font-size: 1rem;
-          line-height: 1.7;
-          color: #666;
+          font-size: 14px;
+          line-height: 1.6;
+          color: '#666';
         }
       `}</style>
 
@@ -362,15 +356,15 @@ export default function WeddingWebsite() {
         
         {/* Welcome message */}
         <p style={{
-          maxWidth: '500px',
-          fontSize: '1.1rem',
-          fontStyle: 'italic',
+          maxWidth: '400px',
+          fontFamily: "'Karla', sans-serif",
+          fontSize: '14px',
           lineHeight: 1.8,
-          color: '#555',
-          marginTop: '3rem',
+          color: '#888',
+          marginTop: '2.5rem',
           animation: 'fadeUp 1s ease-out 0.8s both'
         }}>
-          We can't wait to celebrate with the people who mean the most to us. Thank you for being part of our story — and for making the trip to share this day with us. It truly wouldn't be the same without you.
+          We can't wait to celebrate with the people who mean the most to us. Thank you for making the trip to share this day with us.
         </p>
       </section>
 
