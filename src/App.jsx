@@ -52,10 +52,11 @@ export default function WeddingWebsite() {
 
   const CeremonyIcon = () => (
     <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round">
-      {/* Simple arch/arbor */}
-      <path d="M10 42 L10 18 Q10 8 25 8 Q40 8 40 18 L40 42" fill="none" />
-      {/* Heart at top */}
-      <path d="M25 18 C25 15 22 14 22 16.5 C22 19 25 22 25 22 C25 22 28 19 28 16.5 C28 14 25 15 25 18Z" fill="#e63946" stroke="none"/>
+      {/* Two interlocking wedding rings */}
+      <circle cx="18" cy="25" r="10" />
+      <circle cx="32" cy="25" r="10" />
+      {/* Small heart above */}
+      <path d="M25 12 C25 10 23 9 23 10.5 C23 12 25 14 25 14 C25 14 27 12 27 10.5 C27 9 25 10 25 12Z" fill="#e63946" stroke="none"/>
     </svg>
   );
 
@@ -357,10 +358,10 @@ export default function WeddingWebsite() {
           <div style={{ marginTop: '3rem', marginBottom: '4rem' }}>
             <p style={{
               fontFamily: "'Karla', sans-serif",
-              fontSize: '12px',
-              letterSpacing: '2px',
+              fontSize: '13px',
+              letterSpacing: '1px',
               textTransform: 'lowercase',
-              color: '#e63946',
+              color: '#999',
               marginBottom: '1.5rem'
             }}>
               friday, may 29th
@@ -371,10 +372,10 @@ export default function WeddingWebsite() {
               </div>
               <p style={{
                 fontFamily: "'Karla', sans-serif",
-                fontSize: '11px',
+                fontSize: '13px',
                 letterSpacing: '1px',
                 textTransform: 'lowercase',
-                color: '#e63946',
+                color: '#666',
                 marginBottom: '1rem'
               }}>
                 welcome drinks
@@ -390,7 +391,7 @@ export default function WeddingWebsite() {
                   Tavern on the Hill
                 </a>
               </p>
-              <p style={{ fontSize: '1rem', color: '#666' }}>7:00 in the evening</p>
+              <p style={{ fontSize: '1rem', color: '#666' }}>6:00pm – 9:00pm</p>
               <div className="divider" />
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
                 Join us for casual drinks the night before the wedding
@@ -413,10 +414,10 @@ export default function WeddingWebsite() {
           {/* Wedding Day - May 30th */}
           <p style={{
             fontFamily: "'Karla', sans-serif",
-            fontSize: '12px',
-            letterSpacing: '2px',
+            fontSize: '13px',
+            letterSpacing: '1px',
             textTransform: 'lowercase',
-            color: '#e63946',
+            color: '#999',
             marginBottom: '1.5rem'
           }}>
             saturday, may 30th
@@ -435,10 +436,10 @@ export default function WeddingWebsite() {
               </div>
               <p style={{
                 fontFamily: "'Karla', sans-serif",
-                fontSize: '11px',
+                fontSize: '13px',
                 letterSpacing: '1px',
                 textTransform: 'lowercase',
-                color: '#e63946',
+                color: '#666',
                 marginBottom: '1rem'
               }}>
                 ceremony & reception
@@ -447,7 +448,7 @@ export default function WeddingWebsite() {
               <div className="divider" />
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
                 Vignoble de Chelsea<br />
-                Gatineau Hills, Quebec
+                <span style={{ color: '#666', fontSize: '0.9rem' }}>30 min from downtown Ottawa</span>
               </p>
               <a 
                 href="https://www.google.com/maps/search/?api=1&query=Vignoble+de+Chelsea+1582+Route+105+Chelsea+Quebec" 
@@ -477,10 +478,10 @@ export default function WeddingWebsite() {
           </div>
           <p style={{
             fontFamily: "'Karla', sans-serif",
-            fontSize: '11px',
+            fontSize: '13px',
             letterSpacing: '1px',
             textTransform: 'lowercase',
-            color: '#e63946',
+            color: '#666',
             marginBottom: '1rem'
           }}>
             getting there & back
@@ -499,65 +500,28 @@ export default function WeddingWebsite() {
         padding: '6rem 2rem',
         background: '#fafafa'
       }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
           <h2 className="section-title">travel & stay</h2>
           
           <div className="heart-divider">
             <SmallHeart />
           </div>
           
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem',
-            marginTop: '3rem',
-            textAlign: 'left'
-          }}>
-            <div className="card">
-              <p style={{
-                fontFamily: "'Karla', sans-serif",
-                fontSize: '12px',
-                letterSpacing: '1px',
-                textTransform: 'lowercase',
-                color: '#e63946',
-                marginBottom: '1rem'
-              }}>
-                where to stay
-              </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
-                We've reserved room blocks at nearby hotels. Mention our wedding when booking:
-              </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#666' }}>
-                <strong style={{ color: '#1a1a1a' }}>[Hotel Name]</strong><br />
-                123 Main Street, Chelsea<br />
-                <span style={{ color: '#e63946' }}>code: JORDANMAGGIE</span>
-              </p>
-            </div>
-            
-            <div className="card">
-              <p style={{
-                fontFamily: "'Karla', sans-serif",
-                fontSize: '12px',
-                letterSpacing: '1px',
-                textTransform: 'lowercase',
-                color: '#e63946',
-                marginBottom: '1rem'
-              }}>
-                getting to ottawa
-              </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333' }}>
-                <strong style={{ color: '#1a1a1a' }}>by air</strong><br />
-                Ottawa Airport (YOW) is ~45 min from the venue
-              </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '1rem' }}>
-                <strong style={{ color: '#1a1a1a' }}>by car</strong><br />
-                The venue is 30 min north of downtown Ottawa
-              </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '1rem' }}>
-                <strong style={{ color: '#1a1a1a' }}>parking</strong><br />
-                Yes, there's parking at Vignoble de Chelsea
-              </p>
-            </div>
+          <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '2rem' }}>
+            We recommend staying in downtown Ottawa — there's lots to see and do, and it's an easy Uber ride to both venues.
+          </p>
+          
+          <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '1.5rem' }}>
+            <strong style={{ color: '#1a1a1a' }}>Flying in?</strong><br />
+            Ottawa Airport (YOW) is about 20 minutes from downtown.
+          </p>
+          
+          <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#fff' }}>
+            <p style={{ fontSize: '0.95rem', color: '#666' }}>
+              We've reserved a room block at:<br />
+              <strong style={{ color: '#1a1a1a' }}>[Hotel Name]</strong><br />
+              <span style={{ color: '#e63946' }}>code: JORDANMAGGIE</span>
+            </p>
           </div>
         </div>
       </section>
