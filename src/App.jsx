@@ -451,8 +451,10 @@ export default function WeddingWebsite() {
           
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.5rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            maxWidth: '600px',
+            margin: '0 auto'
           }}>
             <div className="card">
               <div style={{ marginBottom: '1rem' }}>
@@ -466,9 +468,9 @@ export default function WeddingWebsite() {
                 color: '#e63946',
                 marginBottom: '1rem'
               }}>
-                ceremony
+                ceremony & reception
               </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>3:00 in the afternoon</p>
+              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>4:00pm – 11:00pm</p>
               <div className="divider" />
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
                 Vignoble de Chelsea<br />
@@ -483,29 +485,6 @@ export default function WeddingWebsite() {
               >
                 view on google maps →
               </a>
-            </div>
-            
-            <div className="card">
-              <div style={{ marginBottom: '1rem' }}>
-                <DinnerIcon />
-              </div>
-              <p style={{
-                fontFamily: "'Karla', sans-serif",
-                fontSize: '11px',
-                letterSpacing: '1px',
-                textTransform: 'lowercase',
-                color: '#e63946',
-                marginBottom: '1rem'
-              }}>
-                reception
-              </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>immediately following</p>
-              <p style={{ fontSize: '1rem', color: '#666' }}>dinner & dancing</p>
-              <div className="divider" />
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
-                Garden Terrace<br />
-                Vignoble de Chelsea
-              </p>
             </div>
           </div>
           
