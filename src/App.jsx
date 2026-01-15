@@ -426,7 +426,7 @@ export default function WeddingWebsite() {
                 dress code: casual
               </p>
               <a 
-                href="https://maps.app.goo.gl/Uh8ybzZuXoFHWqbE7" 
+                href="https://www.google.com/maps/search/?api=1&query=Tavern+on+the+Hill+Major%27s+Hill+Park+Ottawa" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="venue-link"
@@ -475,7 +475,7 @@ export default function WeddingWebsite() {
                 Gatineau Hills, Quebec
               </p>
               <a 
-                href="https://maps.app.goo.gl/m8W7idmSjBKdaefB7" 
+                href="https://www.google.com/maps/search/?api=1&query=Vignoble+de+Chelsea+1582+Route+105+Chelsea+Quebec" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="venue-link"
