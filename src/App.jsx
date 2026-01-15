@@ -64,6 +64,63 @@ export default function WeddingWebsite() {
     </svg>
   );
 
+  // Simple stick figure icons for events
+  const DrinksIcon = () => (
+    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Wine glass */}
+      <path d="M15 8 L15 8 L11 20 Q11 24 15 24 Q19 24 19 20 L15 8" />
+      <line x1="15" y1="24" x2="15" y2="38" />
+      <line x1="10" y1="38" x2="20" y2="38" />
+      {/* Beer mug */}
+      <rect x="28" y="12" width="12" height="22" rx="2" />
+      <path d="M40 16 Q46 16 46 22 Q46 28 40 28" />
+      <line x1="31" y1="18" x2="31" y2="28" />
+      <line x1="34" y1="17" x2="34" y2="29" />
+      <line x1="37" y1="18" x2="37" y2="28" />
+    </svg>
+  );
+
+  const CeremonyIcon = () => (
+    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round">
+      {/* Simple arch/arbor */}
+      <path d="M10 42 L10 18 Q10 8 25 8 Q40 8 40 18 L40 42" fill="none" />
+      {/* Heart at top */}
+      <path d="M25 16 C25 13 22 12 22 14.5 C22 17 25 20 25 20 C25 20 28 17 28 14.5 C28 12 25 13 25 16Z" fill="#e63946" stroke="none"/>
+      {/* Ground line */}
+      <line x1="6" y1="42" x2="44" y2="42" />
+    </svg>
+  );
+
+  const DinnerIcon = () => (
+    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round">
+      {/* Plate */}
+      <ellipse cx="25" cy="30" rx="16" ry="8" />
+      {/* Fork */}
+      <line x1="12" y1="10" x2="12" y2="22" />
+      <line x1="10" y1="10" x2="10" y2="16" />
+      <line x1="14" y1="10" x2="14" y2="16" />
+      {/* Knife */}
+      <line x1="38" y1="10" x2="38" y2="22" />
+      <path d="M38 10 Q41 12 38 16" />
+    </svg>
+  );
+
+  const ShuttleIcon = () => (
+    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Bus body */}
+      <rect x="6" y="16" width="38" height="20" rx="3" />
+      {/* Windows */}
+      <rect x="10" y="20" width="6" height="6" rx="1" />
+      <rect x="19" y="20" width="6" height="6" rx="1" />
+      <rect x="28" y="20" width="6" height="6" rx="1" />
+      {/* Wheels */}
+      <circle cx="14" cy="36" r="4" />
+      <circle cx="36" cy="36" r="4" />
+      {/* Front */}
+      <line x1="38" y1="20" x2="42" y2="20" />
+    </svg>
+  );
+
   return (
     <div style={{
       fontFamily: "'Libre Baskerville', Georgia, serif",
@@ -95,15 +152,6 @@ export default function WeddingWebsite() {
             opacity: 1;
             transform: translateY(0);
           }
-        }
-        
-        @keyframes heartBeat {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.1); }
-        }
-        
-        @keyframes draw {
-          to { stroke-dashoffset: 0; }
         }
         
         .nav-link {
@@ -192,7 +240,7 @@ export default function WeddingWebsite() {
           width: 40px;
           height: 1px;
           background: #1a1a1a;
-          margin: 2rem auto;
+          margin: 1.5rem auto;
         }
         
         .heart-divider {
@@ -209,6 +257,40 @@ export default function WeddingWebsite() {
           width: 40px;
           height: 1px;
           background: #e0e0e0;
+        }
+        
+        .venue-link {
+          color: #e63946;
+          text-decoration: none;
+          transition: opacity 0.3s ease;
+        }
+        
+        .venue-link:hover {
+          opacity: 0.7;
+        }
+        
+        .faq-item {
+          text-align: left;
+          padding: 1.5rem 0;
+          border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .faq-item:last-child {
+          border-bottom: none;
+        }
+        
+        .faq-question {
+          font-family: 'Karla', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          color: #1a1a1a;
+          margin-bottom: 0.5rem;
+        }
+        
+        .faq-answer {
+          font-size: 1rem;
+          line-height: 1.7;
+          color: #666;
         }
       `}</style>
 
@@ -227,13 +309,13 @@ export default function WeddingWebsite() {
         borderBottom: '1px solid #f0f0f0',
         flexWrap: 'wrap'
       }}>
-        {['home', 'story', 'details', 'travel', 'rsvp'].map((section) => (
+        {['home', 'details', 'travel', 'faq', 'rsvp'].map((section) => (
           <span
             key={section}
             className={`nav-link ${activeSection === section ? 'active' : ''}`}
             onClick={() => scrollToSection(section)}
           >
-            {section === 'story' ? 'our story' : section === 'details' ? 'the day' : section}
+            {section === 'details' ? 'the day' : section}
           </span>
         ))}
       </nav>
@@ -248,18 +330,6 @@ export default function WeddingWebsite() {
         textAlign: 'center',
         padding: '6rem 2rem 4rem'
       }}>
-        <p style={{
-          fontFamily: "'Karla', sans-serif",
-          fontSize: '14px',
-          letterSpacing: '1px',
-          color: '#666',
-          marginBottom: '1.5rem',
-          textTransform: 'lowercase',
-          animation: 'fadeUp 1s ease-out'
-        }}>
-          save the date
-        </p>
-        
         <h1 className="hero-names">
           jordan <span style={{ color: '#e63946' }}>&</span> maggie
         </h1>
@@ -289,70 +359,19 @@ export default function WeddingWebsite() {
         }}>
           ottawa, canada
         </p>
-      </section>
-
-      {/* Our Story Section */}
-      <section id="story" style={{
-        padding: '6rem 2rem',
-        maxWidth: '700px',
-        margin: '0 auto',
-        textAlign: 'center'
-      }}>
-        <h2 className="section-title">our story</h2>
         
-        <div className="heart-divider">
-          <SmallHeart />
-        </div>
-        
-        <div style={{ textAlign: 'left', marginTop: '3rem' }}>
-          <div style={{ marginBottom: '3rem' }}>
-            <p style={{
-              fontFamily: "'Karla', sans-serif",
-              fontSize: '12px',
-              letterSpacing: '1px',
-              textTransform: 'lowercase',
-              color: '#e63946',
-              marginBottom: '0.75rem'
-            }}>
-              how we met
-            </p>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.9, color: '#333' }}>
-              [Share the story of how you met — was it through friends, at work, online? Paint the picture of that first meeting and the spark that started it all.]
-            </p>
-          </div>
-          
-          <div style={{ marginBottom: '3rem' }}>
-            <p style={{
-              fontFamily: "'Karla', sans-serif",
-              fontSize: '12px',
-              letterSpacing: '1px',
-              textTransform: 'lowercase',
-              color: '#e63946',
-              marginBottom: '0.75rem'
-            }}>
-              the first date
-            </p>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.9, color: '#333' }}>
-              [Describe your first date — where did you go? What did you talk about? What made you realize there was something special?]
-            </p>
-          </div>
-          
-          <div>
-            <p style={{
-              fontFamily: "'Karla', sans-serif",
-              fontSize: '12px',
-              letterSpacing: '1px',
-              textTransform: 'lowercase',
-              color: '#e63946',
-              marginBottom: '0.75rem'
-            }}>
-              the proposal
-            </p>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.9, color: '#333' }}>
-              [Tell the story of the proposal — the planning, the moment, the answer. Make your guests feel like they were there!]
-            </p>
-          </div>
-        </div>
+        {/* Welcome message */}
+        <p style={{
+          maxWidth: '500px',
+          fontSize: '1.1rem',
+          fontStyle: 'italic',
+          lineHeight: 1.8,
+          color: '#555',
+          marginTop: '3rem',
+          animation: 'fadeUp 1s ease-out 0.8s both'
+        }}>
+          We can't wait to celebrate with the people who mean the most to us. Thank you for being part of our story — and for making the trip to share this day with us. It truly wouldn't be the same without you.
+        </p>
       </section>
 
       {/* Event Details Section */}
@@ -368,18 +387,21 @@ export default function WeddingWebsite() {
           </div>
           
           {/* Welcome Event - May 29th */}
-          <div style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+          <div style={{ marginTop: '3rem', marginBottom: '4rem' }}>
             <p style={{
               fontFamily: "'Karla', sans-serif",
               fontSize: '12px',
               letterSpacing: '2px',
               textTransform: 'lowercase',
               color: '#e63946',
-              marginBottom: '1rem'
+              marginBottom: '1.5rem'
             }}>
               friday, may 29th
             </p>
             <div className="card" style={{ maxWidth: '400px', margin: '0 auto' }}>
+              <div style={{ marginBottom: '1rem' }}>
+                <DrinksIcon />
+              </div>
               <p style={{
                 fontFamily: "'Karla', sans-serif",
                 fontSize: '11px',
@@ -390,13 +412,34 @@ export default function WeddingWebsite() {
               }}>
                 welcome drinks
               </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Tavern on the Hill</p>
+              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>
+                <a 
+                  href="https://maps.app.goo.gl/tavern-on-the-hill" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="venue-link"
+                  style={{ color: '#1a1a1a', textDecoration: 'none' }}
+                >
+                  Tavern on the Hill
+                </a>
+              </p>
               <p style={{ fontSize: '1rem', color: '#666' }}>7:00 in the evening</p>
               <div className="divider" />
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
-                Join us for casual drinks<br />
-                the night before the wedding
+                Join us for casual drinks the night before the wedding
               </p>
+              <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
+                dress code: casual
+              </p>
+              <a 
+                href="https://maps.app.goo.gl/Uh8ybzZuXoFHWqbE7" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="venue-link"
+                style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '1rem' }}
+              >
+                view on google maps →
+              </a>
             </div>
           </div>
 
@@ -407,7 +450,7 @@ export default function WeddingWebsite() {
             letterSpacing: '2px',
             textTransform: 'lowercase',
             color: '#e63946',
-            marginBottom: '1rem'
+            marginBottom: '1.5rem'
           }}>
             saturday, may 30th
           </p>
@@ -418,6 +461,9 @@ export default function WeddingWebsite() {
             gap: '1.5rem'
           }}>
             <div className="card">
+              <div style={{ marginBottom: '1rem' }}>
+                <CeremonyIcon />
+              </div>
               <p style={{
                 fontFamily: "'Karla', sans-serif",
                 fontSize: '11px',
@@ -434,28 +480,21 @@ export default function WeddingWebsite() {
                 Vignoble de Chelsea<br />
                 Gatineau Hills, Quebec
               </p>
+              <a 
+                href="https://maps.app.goo.gl/m8W7idmSjBKdaefB7" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="venue-link"
+                style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '1rem' }}
+              >
+                view on google maps →
+              </a>
             </div>
             
             <div className="card">
-              <p style={{
-                fontFamily: "'Karla', sans-serif",
-                fontSize: '11px',
-                letterSpacing: '1px',
-                textTransform: 'lowercase',
-                color: '#e63946',
-                marginBottom: '1rem'
-              }}>
-                shuttle service
-              </p>
-              <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>details coming soon</p>
-              <div className="divider" />
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#666', fontStyle: 'italic' }}>
-                Shuttle times and pickup<br />
-                locations to be announced
-              </p>
-            </div>
-            
-            <div className="card">
+              <div style={{ marginBottom: '1rem' }}>
+                <DinnerIcon />
+              </div>
               <p style={{
                 fontFamily: "'Karla', sans-serif",
                 fontSize: '11px',
@@ -501,66 +540,139 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
+      {/* Shuttle Section */}
+      <section style={{
+        padding: '4rem 2rem',
+        background: '#ffffff'
+      }}>
+        <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <ShuttleIcon />
+          </div>
+          <p style={{
+            fontFamily: "'Karla', sans-serif",
+            fontSize: '11px',
+            letterSpacing: '1px',
+            textTransform: 'lowercase',
+            color: '#e63946',
+            marginBottom: '1rem'
+          }}>
+            getting there & back
+          </p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
+            <strong style={{ color: '#1a1a1a' }}>getting there:</strong> please grab an Uber to the venue
+          </p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333' }}>
+            <strong style={{ color: '#1a1a1a' }}>getting home:</strong> we'll have a shuttle back to downtown Ottawa at the end of the night
+          </p>
+        </div>
+      </section>
+
       {/* Travel Section */}
       <section id="travel" style={{
         padding: '6rem 2rem',
-        maxWidth: '800px',
-        margin: '0 auto',
-        textAlign: 'center'
+        background: '#fafafa'
       }}>
-        <h2 className="section-title">travel & stay</h2>
-        
-        <div className="heart-divider">
-          <SmallHeart />
-        </div>
-        
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1.5rem',
-          marginTop: '3rem',
-          textAlign: 'left'
-        }}>
-          <div className="card">
-            <p style={{
-              fontFamily: "'Karla', sans-serif",
-              fontSize: '12px',
-              letterSpacing: '1px',
-              textTransform: 'lowercase',
-              color: '#e63946',
-              marginBottom: '1rem'
-            }}>
-              where to stay
-            </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
-              We've reserved room blocks at nearby hotels. Mention our wedding when booking:
-            </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#666' }}>
-              <strong style={{ color: '#1a1a1a' }}>[Hotel Name]</strong><br />
-              123 Main Street, Chelsea<br />
-              <span style={{ color: '#e63946' }}>code: JORDANMAGGIE</span>
-            </p>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 className="section-title">travel & stay</h2>
+          
+          <div className="heart-divider">
+            <SmallHeart />
           </div>
           
-          <div className="card">
-            <p style={{
-              fontFamily: "'Karla', sans-serif",
-              fontSize: '12px',
-              letterSpacing: '1px',
-              textTransform: 'lowercase',
-              color: '#e63946',
-              marginBottom: '1rem'
-            }}>
-              getting there
-            </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333' }}>
-              <strong style={{ color: '#1a1a1a' }}>by air</strong><br />
-              Ottawa Airport (YOW) is ~45 min from the venue
-            </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '1rem' }}>
-              <strong style={{ color: '#1a1a1a' }}>by car</strong><br />
-              30 min north of downtown Ottawa
-            </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            marginTop: '3rem',
+            textAlign: 'left'
+          }}>
+            <div className="card">
+              <p style={{
+                fontFamily: "'Karla', sans-serif",
+                fontSize: '12px',
+                letterSpacing: '1px',
+                textTransform: 'lowercase',
+                color: '#e63946',
+                marginBottom: '1rem'
+              }}>
+                where to stay
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginBottom: '1rem' }}>
+                We've reserved room blocks at nearby hotels. Mention our wedding when booking:
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#666' }}>
+                <strong style={{ color: '#1a1a1a' }}>[Hotel Name]</strong><br />
+                123 Main Street, Chelsea<br />
+                <span style={{ color: '#e63946' }}>code: JORDANMAGGIE</span>
+              </p>
+            </div>
+            
+            <div className="card">
+              <p style={{
+                fontFamily: "'Karla', sans-serif",
+                fontSize: '12px',
+                letterSpacing: '1px',
+                textTransform: 'lowercase',
+                color: '#e63946',
+                marginBottom: '1rem'
+              }}>
+                getting to ottawa
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333' }}>
+                <strong style={{ color: '#1a1a1a' }}>by air</strong><br />
+                Ottawa Airport (YOW) is ~45 min from the venue
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '1rem' }}>
+                <strong style={{ color: '#1a1a1a' }}>by car</strong><br />
+                The venue is 30 min north of downtown Ottawa
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '1rem' }}>
+                <strong style={{ color: '#1a1a1a' }}>parking</strong><br />
+                Yes, there's parking at Vignoble de Chelsea
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" style={{
+        padding: '6rem 2rem',
+        background: '#ffffff'
+      }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 className="section-title">questions</h2>
+          
+          <div className="heart-divider">
+            <SmallHeart />
+          </div>
+          
+          <div style={{ marginTop: '2rem' }}>
+            <div className="faq-item">
+              <p className="faq-question">Are kids invited?</p>
+              <p className="faq-answer">Please reach out to us — we're happy to chat about it!</p>
+            </div>
+            
+            <div className="faq-item">
+              <p className="faq-question">Can I bring a plus one?</p>
+              <p className="faq-answer">If you're not sure, feel free to ask us!</p>
+            </div>
+            
+            <div className="faq-item">
+              <p className="faq-question">Is there parking at the venue?</p>
+              <p className="faq-answer">Yes, there's parking available at Vignoble de Chelsea on Saturday.</p>
+            </div>
+            
+            <div className="faq-item">
+              <p className="faq-question">When should I RSVP by?</p>
+              <p className="faq-answer">Initial RSVPs by February 10th, final RSVPs by April 1st. We know life happens — just send us a message if anything changes!</p>
+            </div>
+            
+            <div className="faq-item">
+              <p className="faq-question">Where are you registered?</p>
+              <p className="faq-answer">Your presence is the best gift! Traveling to celebrate with us is more than enough.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -581,10 +693,9 @@ export default function WeddingWebsite() {
             fontFamily: "'Karla', sans-serif",
             fontSize: '14px',
             color: '#666',
-            marginBottom: '2.5rem',
-            textTransform: 'lowercase'
+            marginBottom: '2.5rem'
           }}>
-            kindly respond by april 15th, 2026
+            initial rsvps by february 10th · final rsvps by april 1st
           </p>
 
           {!submitted ? (
@@ -653,12 +764,13 @@ export default function WeddingWebsite() {
                   style={{ cursor: 'pointer' }}
                 >
                   <option value="">please select...</option>
-                  <option value="yes">joyfully accepts</option>
-                  <option value="no">regretfully declines</option>
+                  <option value="yes">definitely celebrating with you!</option>
+                  <option value="maybe">still working out the details</option>
+                  <option value="no">unable to make it</option>
                 </select>
               </div>
 
-              {rsvpData.attending === 'yes' && (
+              {(rsvpData.attending === 'yes' || rsvpData.attending === 'maybe') && (
                 <>
                   <div style={{ marginBottom: '1.25rem' }}>
                     <label style={{
@@ -778,14 +890,6 @@ export default function WeddingWebsite() {
           textTransform: 'lowercase'
         }}>
           may 30, 2026 · ottawa, canada
-        </p>
-        <p style={{
-          fontFamily: "'Karla', sans-serif",
-          marginTop: '1.5rem',
-          fontSize: '14px',
-          color: '#e63946'
-        }}>
-          #jordanandmaggie
         </p>
       </footer>
     </div>
