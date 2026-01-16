@@ -11,6 +11,26 @@ export default function WeddingWebsite() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  
+  // Yoga RSVP state
+  const [yogaRsvp, setYogaRsvp] = useState({ name: '' });
+  const [yogaSubmitted, setYogaSubmitted] = useState(false);
+  const [yogaSlotsRemaining, setYogaSlotsRemaining] = useState(35);
+  
+  const handleYogaRsvp = (e) => {
+    e.preventDefault();
+    setYogaSlotsRemaining(prev => Math.max(0, prev - 1));
+    setYogaSubmitted(true);
+  };
+
+  // Running RSVP state
+  const [runRsvp, setRunRsvp] = useState({ name: '' });
+  const [runSubmitted, setRunSubmitted] = useState(false);
+  
+  const handleRunRsvp = (e) => {
+    e.preventDefault();
+    setRunSubmitted(true);
+  };
 
   const handleRsvp = (e) => {
     e.preventDefault();
@@ -89,6 +109,50 @@ export default function WeddingWebsite() {
     </svg>
   );
 
+  const YogaIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Person in lotus pose */}
+      <circle cx="25" cy="12" r="6" />
+      {/* Body */}
+      <path d="M25 18 L25 30" />
+      {/* Crossed legs */}
+      <path d="M15 38 Q20 32 25 35 Q30 32 35 38" />
+      {/* Arms out */}
+      <path d="M25 24 L12 20" />
+      <path d="M25 24 L38 20" />
+    </svg>
+  );
+
+  const CoffeeIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Cup */}
+      <path d="M10 18 L10 36 Q10 40 14 40 L30 40 Q34 40 34 36 L34 18" />
+      {/* Handle */}
+      <path d="M34 22 Q42 22 42 28 Q42 34 34 34" />
+      {/* Steam */}
+      <path d="M18 8 Q20 12 18 14" />
+      <path d="M25 10 Q27 14 25 16" />
+    </svg>
+  );
+
+  const RunningIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 50 50" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Head */}
+      <circle cx="30" cy="10" r="5" />
+      {/* Body leaning forward */}
+      <path d="M28 15 L22 28" />
+      {/* Arms - one forward, one back */}
+      <path d="M24 20 L14 16" />
+      <path d="M24 20 L32 24" />
+      {/* Legs - running pose */}
+      <path d="M22 28 L12 38" />
+      <path d="M22 28 L30 40" />
+      {/* Motion lines */}
+      <path d="M36 12 L40 12" />
+      <path d="M38 16 L42 16" />
+    </svg>
+  );
+
   return (
     <div style={{
       fontFamily: "'Libre Baskerville', Georgia, serif",
@@ -133,6 +197,12 @@ export default function WeddingWebsite() {
         
         .couple-image:hover {
           animation: gentleSway 1s ease-in-out infinite;
+        }
+        
+        .icon-wrapper {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 0.75rem;
         }
         
         .nav-link {
@@ -399,37 +469,12 @@ export default function WeddingWebsite() {
           </p>
           
           <div>
-            <div style={{ marginBottom: '1rem' }}>
+            <div className="icon-wrapper">
               <DrinksIcon />
             </div>
-            <p style={{
-              fontFamily: "'Karla', sans-serif",
-              fontSize: '13px',
-              letterSpacing: '1px',
-              textTransform: 'lowercase',
-              color: '#666',
-              marginBottom: '1rem'
-            }}>
-              welcome drinks
-            </p>
-            <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Tavern on the Hill</p>
-            <p style={{ fontSize: '1rem', color: '#666' }}>6:00pm – 9:00pm</p>
-            <div className="divider" />
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#333' }}>
-              Join us for casual drinks the night before the wedding
-            </p>
-            <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
-              dress code: casual
-            </p>
-            <a 
-              href="https://www.google.com/maps/search/?api=1&query=Tavern+on+the+Hill+Major%27s+Hill+Park+Ottawa" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="venue-link"
-              style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '0.75rem' }}
-            >
-              view on google maps →
-            </a>
+            <p style={{ fontSize: '1.1rem', marginBottom: '0.25rem' }}>welcome drinks</p>
+            <p style={{ fontSize: '0.9rem', color: '#666' }}>6:00pm – 9:00pm · <a href="https://www.google.com/maps/search/?api=1&query=Tavern+on+the+Hill+Major%27s+Hill+Park+Ottawa" target="_blank" rel="noopener noreferrer" className="venue-link">Tavern on the Hill</a></p>
+            <p style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.25rem' }}>dress code: casual · downtown</p>
           </div>
         </div>
       </section>
@@ -452,46 +497,154 @@ export default function WeddingWebsite() {
             letterSpacing: '1px',
             textTransform: 'lowercase',
             color: '#999',
-            marginBottom: '1.5rem'
+            marginBottom: '2rem'
           }}>
             saturday, may 30th
           </p>
           
-          <div>
-            <div style={{ marginBottom: '1rem' }}>
-              <CeremonyIcon />
-            </div>
+          {/* Morning Activities */}
+          <div style={{ marginBottom: '3rem' }}>
             <p style={{
               fontFamily: "'Karla', sans-serif",
-              fontSize: '13px',
-              letterSpacing: '1px',
-              textTransform: 'lowercase',
-              color: '#666',
-              marginBottom: '1rem'
+              fontSize: '11px',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              color: '#999',
+              marginBottom: '1.5rem'
             }}>
-              ceremony & reception
+              · morning ·
             </p>
-            <p style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Vignoble de Chelsea</p>
-            <p style={{ fontSize: '1rem', color: '#666' }}>4:00pm – 11:00pm</p>
-            <p style={{ fontSize: '0.9rem', color: '#999', marginTop: '0.25rem' }}>30 min from downtown Ottawa</p>
-            <div className="divider" />
-            <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '1rem' }}>
-              dress code: garden formal
+            
+            {/* Yoga */}
+            <div style={{ marginBottom: '2rem' }}>
+              <div className="icon-wrapper">
+                <YogaIcon />
+              </div>
+              <p style={{ fontSize: '1.1rem', marginBottom: '0.25rem' }}>morning yoga <span style={{ fontStyle: 'italic', color: '#999', fontSize: '0.9rem' }}>with maggie</span></p>
+              <p style={{ fontSize: '0.9rem', color: '#666' }}>8:30am · <a href="https://www.google.com/maps/search/?api=1&query=PranaShanti+Yoga+Centre+Ottawa" target="_blank" rel="noopener noreferrer" className="venue-link">PranaShanti Yoga Centre</a></p>
+              <p style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.25rem' }}>dress code: comfortable · 10 min from downtown · <span style={{ fontStyle: 'italic' }}>taught by Julia Chen</span></p>
+              
+              {/* Simple Yoga RSVP */}
+              <div style={{ 
+                marginTop: '1rem',
+                padding: '1rem',
+                background: '#fafafa',
+                borderRadius: '4px',
+                maxWidth: '300px',
+                margin: '1rem auto 0'
+              }}>
+                <p style={{ fontSize: '0.8rem', color: yogaSlotsRemaining <= 5 ? '#e63946' : '#666', marginBottom: '0.5rem' }}>
+                  {yogaSlotsRemaining} of 35 spots remaining
+                </p>
+                <p style={{ fontSize: '0.75rem', fontStyle: 'italic', color: '#999', marginBottom: '0.75rem' }}>
+                  prioritizing out-of-town guests 💕
+                </p>
+                
+                {yogaSlotsRemaining === 0 && !yogaSubmitted ? (
+                  <p style={{ fontSize: '0.85rem', color: '#666' }}>class is full — message maggie for waitlist</p>
+                ) : !yogaSubmitted ? (
+                  <form onSubmit={handleYogaRsvp} style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <input
+                      type="text"
+                      className="input-field"
+                      placeholder="your name"
+                      value={yogaRsvp.name}
+                      onChange={(e) => setYogaRsvp({...yogaRsvp, name: e.target.value})}
+                      required
+                      style={{ flex: '1', minWidth: '120px', padding: '10px 12px', fontSize: '13px' }}
+                    />
+                    <button type="submit" className="btn-primary" style={{ padding: '10px 16px', fontSize: '12px' }}>
+                      i'm in
+                    </button>
+                  </form>
+                ) : (
+                  <p style={{ fontSize: '0.9rem', color: '#666' }}>see you on the mat ✨</p>
+                )}
+              </div>
+            </div>
+            
+            {/* Running */}
+            <div style={{ marginBottom: '2rem' }}>
+              <div className="icon-wrapper">
+                <RunningIcon />
+              </div>
+              <p style={{ fontSize: '1.1rem', marginBottom: '0.25rem' }}>morning run <span style={{ fontStyle: 'italic', color: '#999', fontSize: '0.9rem' }}>with jordan</span></p>
+              <p style={{ fontSize: '0.9rem', color: '#666' }}>8:30am · 5K along the canal</p>
+              <p style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.25rem' }}>dress code: athletic · downtown · <span style={{ fontStyle: 'italic' }}>all paces welcome</span></p>
+              
+              {/* Simple Run RSVP */}
+              <div style={{ 
+                marginTop: '1rem',
+                padding: '1rem',
+                background: '#fafafa',
+                borderRadius: '4px',
+                maxWidth: '300px',
+                margin: '1rem auto 0'
+              }}>
+                {!runSubmitted ? (
+                  <form onSubmit={handleRunRsvp} style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <input
+                      type="text"
+                      className="input-field"
+                      placeholder="your name"
+                      value={runRsvp.name}
+                      onChange={(e) => setRunRsvp({...runRsvp, name: e.target.value})}
+                      required
+                      style={{ flex: '1', minWidth: '120px', padding: '10px 12px', fontSize: '13px' }}
+                    />
+                    <button type="submit" className="btn-primary" style={{ padding: '10px 16px', fontSize: '12px' }}>
+                      i'm in
+                    </button>
+                  </form>
+                ) : (
+                  <p style={{ fontSize: '0.9rem', color: '#666' }}>see you at the start line 🏃</p>
+                )}
+              </div>
+            </div>
+            
+            {/* Coffee */}
+            <div>
+              <div className="icon-wrapper">
+                <CoffeeIcon />
+              </div>
+              <p style={{ fontSize: '1.1rem', marginBottom: '0.25rem' }}>coffee after</p>
+              <p style={{ fontSize: '0.9rem', color: '#666' }}>~9:30am · <a href="https://www.google.com/maps/search/?api=1&query=Bridgehead+130+Anderson+St+Ottawa" target="_blank" rel="noopener noreferrer" className="venue-link">Bridgehead</a></p>
+              <p style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.25rem' }}>dress code: come as you are · downtown · <span style={{ fontStyle: 'italic' }}>4 min walk from yoga</span></p>
+            </div>
+          </div>
+          
+          {/* Divider */}
+          <div style={{ 
+            width: '60px', 
+            height: '1px', 
+            background: '#e0e0e0', 
+            margin: '2.5rem auto' 
+          }} />
+          
+          {/* Ceremony & Reception */}
+          <div style={{ marginBottom: '2rem' }}>
+            <p style={{
+              fontFamily: "'Karla', sans-serif",
+              fontSize: '11px',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              color: '#999',
+              marginBottom: '1.5rem'
+            }}>
+              · afternoon & evening ·
             </p>
-            <a 
-              href="https://www.google.com/maps/search/?api=1&query=Vignoble+de+Chelsea+1582+Route+105+Chelsea+Quebec" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="venue-link"
-              style={{ fontSize: '0.9rem', display: 'inline-block', marginTop: '0.75rem' }}
-            >
-              view on google maps →
-            </a>
+            
+            <div className="icon-wrapper">
+              <CeremonyIcon />
+            </div>
+            <p style={{ fontSize: '1.1rem', marginBottom: '0.25rem' }}>ceremony & reception</p>
+            <p style={{ fontSize: '0.9rem', color: '#666' }}>4:00pm – 11:00pm · <a href="https://www.google.com/maps/search/?api=1&query=Vignoble+de+Chelsea+1582+Route+105+Chelsea+Quebec" target="_blank" rel="noopener noreferrer" className="venue-link">Vignoble de Chelsea</a></p>
+            <p style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.25rem' }}>dress code: garden formal · 30 min from downtown</p>
           </div>
           
           {/* Shuttle info */}
           <div style={{ marginTop: '2rem' }}>
-            <div style={{ marginBottom: '1rem' }}>
+            <div className="icon-wrapper">
               <ShuttleIcon />
             </div>
             <p style={{
@@ -505,7 +658,7 @@ export default function WeddingWebsite() {
               getting there & back
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginBottom: '0.5rem' }}>
-              <strong style={{ color: '#1a1a1a' }}>there:</strong> grab an Uber to the venue
+              <strong style={{ color: '#1a1a1a' }}>there:</strong> drive or rideshare (Uber/Lyft)
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333' }}>
               <strong style={{ color: '#1a1a1a' }}>back:</strong> shuttle to downtown Ottawa at the end of the night
@@ -527,7 +680,7 @@ export default function WeddingWebsite() {
           </div>
           
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '2rem' }}>
-            We recommend staying in downtown Ottawa — there's lots to see and do, and it's an easy Uber ride to both venues.
+            We recommend staying in downtown Ottawa — there's lots to see and do, and it's an easy walk/drive to all events.
           </p>
           
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#333', marginTop: '1.5rem' }}>
